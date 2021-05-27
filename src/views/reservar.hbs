@@ -1,0 +1,104 @@
+<div class="container bg-dark">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well well-sm">
+        <form action="/misreservas" method="post">
+
+          <div class="card form-group col-md-12">
+            <div class="col-md-12">
+              <div class="col-md-12">
+                <h3>Reserva</h3>
+              </div>
+              <div class="card-body">
+                <form action="/misreservas" method="POST">
+                  <div class="form-groud">
+                    <input type="text" name="nameRestaurante" class="form-control" placeholder="Nombre del restaurante"
+                      autofocus>
+                  </div>
+                  <div class="form-groud">
+                    <input type="number" min="0" name="numComensales" class="form-control"
+                      placeholder="Numero de comensales" autofocus>
+                  </div>
+                  <div class="form group">
+                    <textarea name="distribucion" class="form-control" placeholder="Distribucion deseada"></textarea>
+                  </div>
+                  <div class="form-groud">
+                    <input type="text" min="0" name="numTelefono" class="form-control" placeholder="Numero de Telefono"
+                      autofocus>
+                  </div>
+                  <div class="form-groud">
+                    <input type="date" name="fecha" class="form-control" placeholder="Fecha">
+                  </div>
+                  <div class="form-groud">
+                    <input type="time" name="hora" class="form-control" placeholder="Hora">
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                      Reservar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        
+        <form class="form-horizontal" method="post">
+          {{#each errores}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{text}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {{/each}}
+
+          <div class="card form-group col-md-12">
+            <div class="col-md-12">
+              <div class="col-md-12">
+                <h3>Comentarios</h3>
+              </div>
+              <div class="card-body">
+                <form action="/restaurantes/reservar">
+                  <div class="form-groud">
+                    <input type="text" name="title" class="form-control" placeholder="Title" autofocus>
+                  </div>
+                  <div class="form group">
+                    <textarea name="description" class="form-control" placeholder="Description"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                      Publicar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="row">
+
+              {{#each comentariosUsuarios}}
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      {{title}}
+                    </h4>
+                    <p>{{description}}</p>
+                    <form action="/restaurantes/reservar/delete/{{_id}}?_method=DELETE" method="POST">
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button class="btn btn-danger btn-block btn-sm">
+                        Borrar
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
