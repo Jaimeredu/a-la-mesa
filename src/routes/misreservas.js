@@ -19,4 +19,15 @@ router.post('/misreservas', isAuthenticated, async (req, res) => {
         const misReservas = await Reserva.find().lean().sort({date: 'desc'});
         res.render('misReservas' , {misReservas});
     });
+
+    router.get('/misreservas/edit/:id', isAuthenticated, async (req, res) => {
+        const misReservas = await Reserva.findById(req.params.id).lean();
+        res.render('edit-reservas' , {misReservas});
+    });
+    router.put('/misreservas/edit/:id', isAuthenticated, async (req, res) => {
+        const {numComensales, distribucion, numTelefono, fecha, hora} = req.body;
+        await Reserva.findByIdAndUpdate(req.params.id, {numComensales, distribucion, numTelefono, fecha, hora}).lean();
+        res.redirect('/misreservas') 
+    });
+
 module.exports = router;
