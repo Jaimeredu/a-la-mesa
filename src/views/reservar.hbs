@@ -3,7 +3,6 @@
     <div class="col-md-12">
       <div class="well well-sm">
         <form action="/misreservas" method="post">
-
           <div class="card form-group col-md-12">
             <div class="col-md-12">
               <div class="col-md-12">
@@ -11,20 +10,28 @@
               </div>
               <div class="card-body">
                 <form action="/misreservas" method="POST">
-                  <div class="form-groud">
-                    <input type="text" name="nameRestaurante" class="form-control" placeholder="Nombre del restaurante"
-                      autofocus>
+                  <div class="form-group">
+                    <select class="custom-select" name="nameRestaurante">
+                      <option value="" selected>Restaurante...</option>
+                      <option value="Agora">Agora</option>
+                      <option value="Machín">Machín</option>
+                      <option value="Canarias">Canarias</option>
+                    </select>
                   </div>
                   <div class="form-groud">
-                    <input type="number" min="0" name="numComensales" class="form-control"
-                      placeholder="Numero de comensales" autofocus>
+                    <input type="number" min="1" name="numComensales" class="form-control"
+                      placeholder="Numero de comensales">
                   </div>
-                  <div class="form group">
-                    <textarea name="distribucion" class="form-control" placeholder="Distribucion deseada"></textarea>
+                  <div class="form-group">
+                    <select class="custom-select" name="distribucion">
+                      <option value="" selected>Distribución...</option>
+                      <option value="Interior">Interior</option>
+                      <option value="Exterior">Exterior</option>
+                      <option value="Indiferente">Indiferente</option>
+                    </select>
                   </div>
                   <div class="form-groud">
-                    <input type="text" min="0" name="numTelefono" class="form-control" placeholder="Numero de Telefono"
-                      autofocus>
+                    <input type="text" name="numTelefono" class="form-control" placeholder="Número de Teléfono">
                   </div>
                   <div class="form-groud">
                     <input type="date" name="fecha" class="form-control" placeholder="Fecha">
@@ -43,16 +50,16 @@
           </div>
         </form>
 
-        
+
         <form class="form-horizontal" method="post">
           {{#each errores}}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          {{text}}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        {{/each}}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{text}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {{/each}}
 
           <div class="card form-group col-md-12">
             <div class="col-md-12">

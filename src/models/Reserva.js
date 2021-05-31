@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
+
 const ReservaSchema = new Schema({
     nameRestaurante: {type: String, required: true},
     numComensales: { type: Number, required: true},
@@ -8,7 +9,8 @@ const ReservaSchema = new Schema({
     numTelefono: { type: String, required: true},
     fecha: { type: String, required: true},
     hora: {type: String, required: true},
-    date: { type: Date, default: Date.now}
+    date: { type: Date, default: Date.now},
+    user: { type: String}
 })
 
 module.exports = mongoose.model('Reserva', ReservaSchema)
